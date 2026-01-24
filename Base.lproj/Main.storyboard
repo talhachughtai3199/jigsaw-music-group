@@ -901,6 +901,12 @@
                                         <view key="view" id="0pQ-yz-A53">
                                             <rect key="frame" x="10" y="33" width="554" height="400"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n7i-8C-XTb" customClass="SchemaSettingsView" customModule="jigsaw_rpt" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="7" width="554" height="420"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
+                                                </customView>
+                                            </subviews>
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="FTP Settings" identifier="" id="6c6-50-t2f">
