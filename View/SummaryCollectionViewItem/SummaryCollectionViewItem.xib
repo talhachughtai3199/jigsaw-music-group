@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="SummaryCollectionViewItem" customModule="jigsaw_rpt" customModuleProvider="target">
+            <connections>
+                <outlet property="LblAmount" destination="rsa-Kg-V6e" id="Uqe-Kf-Xbc"/>
+                <outlet property="LblCurrency" destination="gYt-7c-nMj" id="e1u-Xl-3Rg"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="418" height="89"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2mo-lx-u7k">
+                    <rect key="frame" x="0.0" y="-2" width="418" height="5"/>
+                </box>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zy5-22-Pmc">
+                    <rect key="frame" x="20" y="34" width="137" height="19"/>
+                    <subviews>
+                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gYt-7c-nMj">
+                            <rect key="frame" x="-2" y="2" width="64" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="Currancy:" id="xDh-ht-myn">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rsa-Kg-V6e">
+                            <rect key="frame" x="78" y="0.0" width="61" height="19"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="Amount" id="fkh-dA-LoM">
+                                <font key="font" metaFont="system" size="16"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="2mo-lx-u7k" secondAttribute="bottom" id="2NI-Ia-1u6"/>
+                <constraint firstItem="2mo-lx-u7k" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="BLp-B8-s6o"/>
+                <constraint firstAttribute="trailing" secondItem="2mo-lx-u7k" secondAttribute="trailing" id="u4j-uc-QW9"/>
+            </constraints>
+            <point key="canvasLocation" x="-193" y="52.5"/>
+        </customView>
+        <collectionViewItem id="HH1-Pp-1cY" customClass="SummaryCollectionViewItem" customModule="jigsaw_rpt" customModuleProvider="target"/>
+    </objects>
+</document>

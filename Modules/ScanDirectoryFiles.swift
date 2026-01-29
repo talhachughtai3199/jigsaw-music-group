@@ -77,7 +77,6 @@ class ScanDirectoryFiles{
         
         let uncompressedURL = fileURL.deletingPathExtension()
         
-        // If already uncompressed, return
         if FileManager.default.fileExists(atPath: uncompressedURL.path) {
             return nil
         }
@@ -106,47 +105,59 @@ class ScanDirectoryFiles{
     }
     
     func validateAndAddFile(_ fileURL: URL) -> Bool {
-        var res = false
-        if supportedExtensions.contains(fileURL.pathExtension.lowercased()) {
-            do{
-                let resUncompressedFile = try uncompressGZFileIfNeeded(at: fileURL)
-                if(resUncompressedFile == nil){
-                    return false
-                }
-                
-                let uncompressedFileURL = resUncompressedFile!
-                let fileDetails = FileDetails(fileName: uncompressedFileURL.lastPathComponent,
-                                         filePath: uncompressedFileURL,
-                                         fileExtension: uncompressedFileURL.pathExtension.lowercased())
-                
-                //update service code and beautify name
-                fileDetails.service = fileDetails.fileDirectoryName()
-                
-                if let service = fileDetails.service{
-                    if(!service.isEmpty){
-                        let serviceBeautifyName = services.getBeautifyServiceNameFromFile(fileDetails.fileName ?? "Not specified") ?? services.getBeautifyServiceName(service)
-                        fileDetails.serviceBeautifyName =  serviceBeautifyName
-                        
-                        //update file schema
-                        if(!serviceBeautifyName.isEmpty){
-                            fileDetails.itemType = .Assigned
-                            fileDetails.schema = services.schemas.first(where: {$0.key == serviceBeautifyName})?.value
-                        }else {
-                            fileDetails.serviceBeautifyName = "Not specified"
-                        }
-                    }
-                }
-                
-                
-                
-                files.append(fileDetails)
-                res = true
-            }catch{
-                Logger.log("validateAndAddFile ex", error.localizedDescription)
-            }
+        guard supportedExtensions.contains(fileURL.pathExtension.lowercased()) else {
+            return false
         }
-        return res
+
+        do {
+            let resUncompressedFile = try uncompressGZFileIfNeeded(at: fileURL)
+            if resUncompressedFile == nil { return false }
+
+            let uncompressedFileURL = resUncompressedFile!
+            let fileName = uncompressedFileURL.lastPathComponent
+
+            let fileDetails = FileDetails(
+                fileName: fileName,
+                filePath: uncompressedFileURL,
+                fileExtension: uncompressedFileURL.pathExtension.lowercased()
+            )
+
+            let schemas = SqliteManager.shared.getAllReportSchemas()
+
+            var matchedService: String?
+            var matchedSchema: ReportSchema?
+
+            for (serviceName, schema) in schemas {
+                let regex = schema.FileNameRegex ?? serviceName
+
+                if matchesPattern(regex, service: serviceName, fileName: fileName) {
+                    matchedService = serviceName
+                    matchedSchema = schema
+                    break
+                }
+            }
+
+            
+            
+            if let service = matchedService, let schema = matchedSchema {
+                fileDetails.serviceBeautifyName = service
+                fileDetails.service = service
+                fileDetails.schema = schema
+                fileDetails.itemType = .Assigned
+            } else {
+                fileDetails.serviceBeautifyName = "Not specified"
+                fileDetails.itemType = .Unassigned
+            }
+
+            files.append(fileDetails)
+            return true
+
+        } catch {
+            Logger.log("validateAndAddFile", error.localizedDescription)
+            return false
+        }
     }
+
     
     func isValidFile(filePath: String) -> Bool {
         guard !filePath.isEmpty else {return false}
@@ -160,6 +171,40 @@ class ScanDirectoryFiles{
         }
         
         //TODO: // Exclude files located in any directory starting with ".removed_at_"
+        return false
+    }
+    
+    func matchesPattern(_ pattern: String, service: String,  fileName: String) -> Bool {
+        let fileNameLower = fileName.lowercased().replacingOccurrences(of: "-", with: " ")
+        let normalizedService = service.lowercased()
+
+        let parts = pattern
+            .split(separator: ",")
+            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            .filter { !$0.isEmpty }
+
+        for part in parts {
+
+            if let regex = try? NSRegularExpression(
+                pattern: part,
+                options: [.caseInsensitive]
+            ) {
+                let range = NSRange(fileName.startIndex..., in: fileName)
+                if regex.firstMatch(in: fileName, options: [], range: range) != nil {
+                    return true
+                }
+            }
+            
+
+            if fileNameLower.contains(part.lowercased()) {
+                return true
+            }
+        }
+
+        if fileNameLower.contains(normalizedService) {
+            return true
+        }
+        
         return false
     }
 }

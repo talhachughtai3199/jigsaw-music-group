@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="UnAssignedFilesView" customModule="jigsaw_rpt" customModuleProvider="target">
+            <connections>
+                <outlet property="ChkSelectAllFiles" destination="kQX-5o-0oC" id="psp-SM-EEp"/>
+                <outlet property="CollectionView" destination="DJV-6b-5VQ" id="zFj-eY-Sbb"/>
+                <outlet property="CollectionViewScrollView" destination="TY1-gn-Lqf" id="JM5-s3-Ukd"/>
+                <outlet property="FilesCountDiv" destination="Pic-2I-yOQ" id="w3g-Vc-bBP"/>
+                <outlet property="LblFilesFound" destination="y6b-zR-xFY" id="FhT-6g-dDQ"/>
+                <outlet property="NoFilesFound" destination="ZvX-Hk-kEG" id="XK3-pb-Csi"/>
+                <outlet property="contentView" destination="c22-O7-iKe" id="Zlf-JP-jO2"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="530" height="311"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <scrollView wantsLayer="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TY1-gn-Lqf">
+                    <rect key="frame" x="0.0" y="0.0" width="530" height="281"/>
+                    <clipView key="contentView" id="jj3-AN-zva">
+                        <rect key="frame" x="0.0" y="0.0" width="530" height="281"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView id="DJV-6b-5VQ">
+                                <rect key="frame" x="0.0" y="0.0" width="530" height="281"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="MXf-nK-7aG">
+                                    <size key="itemSize" width="50" height="50"/>
+                                </collectionViewFlowLayout>
+                                <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                <accessibility identifier="UnAssignedFilesCollectionIdentifier"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="-2" id="Yvo-Kh-JV6"/>
+                                    <outlet property="delegate" destination="-2" id="xub-xP-7RF"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                    </clipView>
+                    <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="8NN-FT-atB">
+                        <rect key="frame" x="-100" y="-100" width="233" height="15"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                    <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ekK-VJ-Olf">
+                        <rect key="frame" x="234" y="1" width="15" height="143"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </scroller>
+                </scrollView>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZvX-Hk-kEG">
+                    <rect key="frame" x="207" y="149" width="116" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="No files added so far." id="PCn-2p-mEU">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kQX-5o-0oC" customClass="HandCursorButton" customModule="jigsaw_rpt" customModuleProvider="target">
+                    <rect key="frame" x="9" y="296" width="69" height="16"/>
+                    <buttonCell key="cell" type="check" title="Select all" bezelStyle="regularSquare" imagePosition="left" controlSize="small" state="on" inset="2" id="fJE-aw-vq8">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="ChkSelectAllFilesPressed:" target="-2" id="5DB-Jo-f0z"/>
+                    </connections>
+                </button>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="Pic-2I-yOQ">
+                    <rect key="frame" x="0.0" y="283" width="530" height="5"/>
+                </box>
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y6b-zR-xFY">
+                    <rect key="frame" x="419" y="297" width="108" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="0 of 0 files selected" id="LWu-BF-tCF">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="TY1-gn-Lqf" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="Af6-rs-Gsw"/>
+                <constraint firstAttribute="trailing" secondItem="TY1-gn-Lqf" secondAttribute="trailing" id="B3c-gA-OSz"/>
+                <constraint firstItem="ZvX-Hk-kEG" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="BQj-LU-BOX"/>
+                <constraint firstItem="kQX-5o-0oC" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="CXL-hI-v6S"/>
+                <constraint firstItem="y6b-zR-xFY" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="DR5-5F-xxe"/>
+                <constraint firstItem="ZvX-Hk-kEG" firstAttribute="centerY" secondItem="c22-O7-iKe" secondAttribute="centerY" id="F8e-1z-1i9"/>
+                <constraint firstAttribute="trailing" secondItem="y6b-zR-xFY" secondAttribute="trailing" constant="5" id="FOB-0Z-q7o"/>
+                <constraint firstItem="Pic-2I-yOQ" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" id="GmZ-EZ-OFZ"/>
+                <constraint firstItem="kQX-5o-0oC" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="10" id="QxY-xl-6Vs"/>
+                <constraint firstItem="Pic-2I-yOQ" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="25" id="XjK-Dg-rn1"/>
+                <constraint firstAttribute="bottom" secondItem="TY1-gn-Lqf" secondAttribute="bottom" id="ggm-oc-d0d"/>
+                <constraint firstItem="TY1-gn-Lqf" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="30" id="nQs-ZR-be1"/>
+                <constraint firstAttribute="trailing" secondItem="Pic-2I-yOQ" secondAttribute="trailing" id="yzo-Wu-par"/>
+            </constraints>
+            <point key="canvasLocation" x="124" y="142.5"/>
+        </customView>
+    </objects>
+</document>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="23504" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23504"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AssignedFilesCollectionViewItem" customModule="jigsaw_rpt" customModuleProvider="target">
+            <connections>
+                <outlet property="BgBox" destination="jlQ-Ui-m55" id="Mp7-M3-iwO"/>
+                <outlet property="BtnOpenFileLocation" destination="MSB-2j-89X" id="pvc-sF-Lkw"/>
+                <outlet property="ChkSelection" destination="8s3-Ve-gCf" id="N7T-Hk-ieo"/>
+                <outlet property="LblFileName" destination="gYt-7c-nMj" id="I8d-dq-j5x"/>
+                <outlet property="LblFilePath" destination="rsa-Kg-V6e" id="1mu-PJ-kLe"/>
+                <outlet property="MenuSchema" destination="lh6-f0-dQf" id="Tor-Ud-quS"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="551" height="89"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <box title="Box" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="jlQ-Ui-m55">
+                    <rect key="frame" x="-3" y="0.0" width="557" height="87"/>
+                    <view key="contentView" id="exX-4D-O7b">
+                        <rect key="frame" x="4" y="5" width="549" height="79"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    </view>
+                </box>
+                <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="2mo-lx-u7k">
+                    <rect key="frame" x="0.0" y="-2" width="551" height="5"/>
+                </box>
+                <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="20" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zy5-22-Pmc">
+                    <rect key="frame" x="20" y="28" width="511" height="34"/>
+                    <subviews>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Srm-a6-ibh">
+                            <rect key="frame" x="0.0" y="0.0" width="286" height="34"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8s3-Ve-gCf" customClass="HandCursorButton" customModule="jigsaw_rpt" customModuleProvider="target">
+                                    <rect key="frame" x="-2" y="8" width="18" height="18"/>
+                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="3gh-sv-jFJ">
+                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                        <font key="font" metaFont="system"/>
+                                    </buttonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="14" id="KUI-nZ-0KG"/>
+                                        <constraint firstAttribute="height" constant="14" id="mTp-YJ-raR"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="ChkSelectionPressed:" target="-2" id="bPi-mz-XnJ"/>
+                                    </connections>
+                                </button>
+                                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zZP-GY-09r">
+                                    <rect key="frame" x="24" y="0.0" width="262" height="34"/>
+                                    <subviews>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gYt-7c-nMj">
+                                            <rect key="frame" x="-2" y="18" width="59" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="Filename" id="xDh-ht-myn">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rsa-Kg-V6e">
+                                            <rect key="frame" x="-2" y="0.0" width="40" height="11"/>
+                                            <textFieldCell key="cell" lineBreakMode="truncatingMiddle" title="FilePath" id="fkh-dA-LoM">
+                                                <font key="font" metaFont="miniSystem"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                </stackView>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="10" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mgm-Ie-LgR">
+                            <rect key="frame" x="306" y="7" width="205" height="20"/>
+                            <subviews>
+                                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lh6-f0-dQf">
+                                    <rect key="frame" x="-3" y="-4" width="187" height="25"/>
+                                    <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="0sn-Yy-Fh6" id="MCv-73-Esg">
+                                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="message"/>
+                                        <menu key="menu" id="zPX-Ks-N4H">
+                                            <items>
+                                                <menuItem title="Item 1" state="on" id="0sn-Yy-Fh6"/>
+                                                <menuItem title="Item 2" id="SMI-PE-Tsh"/>
+                                                <menuItem title="Item 3" id="fj0-1r-lVj"/>
+                                            </items>
+                                        </menu>
+                                    </popUpButtonCell>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="180" id="UIk-0k-WrT"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="MenuSchemaChanged:" target="-2" id="yPf-ib-CM2"/>
+                                    </connections>
+                                </popUpButton>
+                                <button translatesAutoresizingMaskIntoConstraints="NO" id="MSB-2j-89X" customClass="HandCursorButton" customModule="jigsaw_rpt" customModuleProvider="target">
+                                    <rect key="frame" x="190" y="2" width="15" height="15"/>
+                                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="arrowshape.right.circle" catalog="system" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="J0U-XV-2Nb">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" metaFont="system" size="16"/>
+                                    </buttonCell>
+                                    <symbolConfiguration key="symbolConfiguration" scale="small">
+                                        <nil key="locale"/>
+                                    </symbolConfiguration>
+                                    <connections>
+                                        <action selector="BtnOpenFileLocationPressed:" target="-2" id="c1K-7e-Hm2"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="205" id="nyw-fu-Azl"/>
+                            </constraints>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="2mo-lx-u7k" secondAttribute="bottom" id="2NI-Ia-1u6"/>
+                <constraint firstItem="2mo-lx-u7k" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="BLp-B8-s6o"/>
+                <constraint firstAttribute="bottom" secondItem="jlQ-Ui-m55" secondAttribute="bottom" constant="4" id="Bat-jF-45x"/>
+                <constraint firstItem="Zy5-22-Pmc" firstAttribute="centerY" secondItem="Hz6-mo-xeY" secondAttribute="centerY" id="CFS-jC-m4l"/>
+                <constraint firstItem="jlQ-Ui-m55" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="4" id="CmC-Zk-IUG"/>
+                <constraint firstItem="Zy5-22-Pmc" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="J53-fe-vCs"/>
+                <constraint firstAttribute="trailing" secondItem="jlQ-Ui-m55" secondAttribute="trailing" id="M01-0n-mkx"/>
+                <constraint firstItem="jlQ-Ui-m55" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="Vg9-ri-GMX"/>
+                <constraint firstAttribute="trailing" secondItem="Zy5-22-Pmc" secondAttribute="trailing" constant="20" id="W6N-c2-jqt"/>
+                <constraint firstAttribute="trailing" secondItem="2mo-lx-u7k" secondAttribute="trailing" id="u4j-uc-QW9"/>
+            </constraints>
+            <point key="canvasLocation" x="-193" y="52.5"/>
+        </customView>
+        <collectionViewItem id="HH1-Pp-1cY" customClass="AssignedFilesCollectionViewItem" customModule="jigsaw_rpt" customModuleProvider="target"/>
+    </objects>
+    <resources>
+        <image name="arrowshape.right.circle" catalog="system" width="15" height="15"/>
+    </resources>
+</document>
